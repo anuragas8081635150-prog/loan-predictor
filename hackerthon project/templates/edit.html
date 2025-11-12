@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Edit Loan Application</title>
+    <style>
+        h1{
+            color:rgb(15, 7, 130);
+            background: #f0f268;
+            border:3px solid #191114;
+            padding:10px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        form {
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Loan Application</h1>
+    
+
+    <form method="POST" action="{{ url_for('edit_application', app_id=app[0]) }}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ app[1] }}" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="{{ app[2] }}" min="0" required>
+
+        <label for="income">Income:</label>
+        <input type="number" id="income" name="income" value="{{ app[3] }}" min="0" required>
+
+        <label for="credit_score">Credit Score:</label>
+        <input type="number" id="credit_score" name="credit_score" value="{{ app[4] }}" min="0" max="850" required>
+
+        <label for="loan_amount">Loan Amount:</label>
+        <input type="number" id="loan_amount" name="loan_amount" value="{{ app[5] }}" min="0" required>
+
+        <button type="submit">Update Application</button>
+    </form>
+
+    <a href="{{ url_for('list_applications') }}">&larr; Back to Applications List</a>
+</body>
+</html>
